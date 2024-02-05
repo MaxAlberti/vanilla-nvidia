@@ -22,6 +22,11 @@ modules:
 #  - wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda-repo-debian11-11-8-local_11.8.0-520.61.05-1_amd64.deb -nv -P /deb-pkgs
 
 # - Install Cuda - Alt
+- name: install-cuda-deps
+  type: apt
+  source:
+    packages:
+    - gcc
 - name: install-cuda
   type: shell
   commands:
@@ -29,6 +34,7 @@ modules:
   - wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run -nv
   - echo "Installing CUDA..."
   - sh cuda_11.8.0_520.61.05_linux.run
+  - cat /var/log/cuda-installer.log # DEBUG
 
 # - Install debs
 #- name: install-debs
