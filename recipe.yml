@@ -42,7 +42,7 @@ modules:
   includes:
     - modules/50-install-debs
 
- - Install CUDA
+# - Install CUDA
 - name: install-cuda-repo
   type: shell
   commands:
