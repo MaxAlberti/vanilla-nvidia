@@ -58,6 +58,7 @@ modules:
   type: apt
   source:
     packages:
+    - gcc
     - cuda
 
 # - Set Image Name
