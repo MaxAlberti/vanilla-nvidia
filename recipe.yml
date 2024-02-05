@@ -46,6 +46,8 @@ modules:
 - name: install-cuda-repo
   type: shell
   commands:
+  - echo "Deleting .deb files..."
+  - rm -rf /deb-pkgs/cuda-repo-debian11-11-8-local_11.8.0-520.61.05-1_amd64.deb
   - echo "Installing CUDA..."
   - echo "Copying keyring"
   - cp /var/cuda-repo-debian11-11-8-local/cuda-*-keyring.gpg /usr/share/keyrings/
