@@ -1,5 +1,5 @@
-base: ghcr.io/vanilla-os/desktop:main
-name: Vanilla Desktop Nvidia
+base: ghcr.io/vanilla-os/nvidia:main
+name: Vanilla Nvidia Cuda
 id: vanilla-nvidia
 labels:
   maintainer: self-maintained
