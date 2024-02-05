@@ -16,48 +16,49 @@ modules:
 # Put your custom actions behind this comment
 
 # - Download debs
-#- name: install-cuda-repo
-#  type: shell
-#  commands:
-#  - wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda-repo-debian11-11-8-local_11.8.0-520.61.05-1_amd64.deb -nv -P /deb-pkgs
-
-# - Install Cuda - Alt
-- name: install-cuda-deps
-  type: apt
-  source:
-    packages:
-    - gcc
-- name: install-cuda
+- name: install-cuda-repo
   type: shell
   commands:
-  - echo "Downloading CUDA..."
-  - wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run -nv
-  - echo "Installing CUDA..."
-  - sh cuda_11.8.0_520.61.05_linux.run
-  - cat /var/log/cuda-installer.log # DEBUG
+  - wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda-repo-debian11-11-8-local_11.8.0-520.61.05-1_amd64.deb -nv -P /deb-pkgs
 
-# - Install debs
-#- name: install-debs
-#  type: includes
-#  includes:
-#    - modules/50-install-debs
-
-# - Install CUDA
-#- name: install-cuda-repo
-#  type: shell
-#  commands:
-#  - echo "Installing CUDA..."
-#  - echo "Copying keyring"
-#  - cp /var/cuda-repo-debian11-11-8-local/cuda-*-keyring.gpg /usr/share/keyrings/
-#  - echo "Adding repository"
-#  - add-apt-repository contrib
-#  - echo "Updating repositories"
-#  - apt-get update
-#- name: install-cuda
+# - Install Cuda - Alt
+#- name: install-cuda-deps
 #  type: apt
 #  source:
 #    packages:
-#    - cuda
+#    - gcc
+#- name: install-cuda
+#  type: shell
+#  commands:
+#  - echo "Downloading CUDA..."
+#  - wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run -nv
+#  - echo "Installing CUDA..."
+#  - sh cuda_11.8.0_520.61.05_linux.run
+#  - cat /var/log/cuda-installer.log # DEBUG
+
+# - Install debs
+- name: install-debs
+  type: includes
+  includes:
+    - modules/50-install-debs
+
+ - Install CUDA
+- name: install-cuda-repo
+  type: shell
+  commands:
+  - echo "Installing CUDA..."
+  - echo "Copying keyring"
+  - cp /var/cuda-repo-debian11-11-8-local/cuda-*-keyring.gpg /usr/share/keyrings/
+  - echo "Adding repository"
+  - touch /etc/apt/sources.list.d/debian.list
+  - echo "deb http://deb.debian.org/debian/ bookworm main contrib non-free-firmware" > /etc/apt/sources.list.d/debian.list
+  - echo "Updating repositories"
+  - apt-get update
+- name: install-cuda
+  type: apt
+  source:
+    packages:
+    - cuda
 
 # - Set Image Name
 - name: set-image-name
