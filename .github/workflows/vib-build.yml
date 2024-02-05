@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  CUSTOM_IMAGE_NAME: custom
+  CUSTOM_IMAGE_NAME: vanilla-nvidia
 
 jobs:
   check_update:

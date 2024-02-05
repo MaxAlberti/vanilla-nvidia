@@ -1,6 +1,6 @@
 base: ghcr.io/vanilla-os/desktop:main
-name: Custom Vanilla Desktop
-id: vanilla-custom
+name: Vanilla Desktop Nvidia
+id: vanilla-nvidia
 labels:
   maintainer: self-maintained
 args:
@@ -15,22 +15,58 @@ modules:
 
 # Put your custom actions behind this comment
 
-- name: example-packages
-  type: apt
-  source:
-    packages:
-    - vim
-
-- name: example-commands
+# - Download debs
+- name: install-cuda-repo
   type: shell
   commands:
-  - echo Example output
+  - pwd # DEBUG
+  - ls # DEBUG
+  - echo "Downloading debs CUDA..."
+  - wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda-repo-debian11-11-8-local_11.8.0-520.61.05-1_amd64.deb -P includes.container/deb-pkgs
 
-- name: package-modules
+# - Install debs
+- name: install-debs
   type: includes
   includes:
     - modules/50-install-debs
+
+# - Install CUDA
+- name: install-cuda-repo
+  type: shell
+  commands:
+  - echo "Installing CUDA..."
+  - cp /var/cuda-repo-debian11-11-8-local/cuda-*-keyring.gpg /usr/share/keyrings/
+  - add-apt-repository contrib
+  - apt-get update
+- name: install-cuda
+  type: apt
+  source:
+    packages:
+    - cuda
+
+# - Set Image Name
+- name: set-image-name
+  type: includes
+  includes:
     - modules/80-set-image-abroot-config
+
+# - DELME
+#- name: example-packages
+#  type: apt
+#  source:
+#    packages:
+#    - vim
+
+#- name: example-commands
+#  type: shell
+#  commands:
+#  - echo Example output
+
+#- name: package-modules
+#  type: includes
+#  includes:
+#    - modules/50-install-debs
+#    - modules/80-set-image-abroot-config
 
 # Put your custom actions before this comment
 
