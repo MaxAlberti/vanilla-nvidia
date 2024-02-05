@@ -32,8 +32,11 @@ modules:
   type: shell
   commands:
   - echo "Installing CUDA..."
+  - echo "Copying keyring"
   - cp /var/cuda-repo-debian11-11-8-local/cuda-*-keyring.gpg /usr/share/keyrings/
+  - echo "Adding repository"
   - add-apt-repository contrib
+  - echo "Updating repositories"
   - apt-get update
 - name: install-cuda
   type: apt
