@@ -1,6 +1,6 @@
 base: ghcr.io/vanilla-os/desktop:main
-name: Custom Vanilla Desktop
-id: vanilla-custom
+name: Vanilla Desktop Nvidia
+id: vanilla-nvidia
 labels:
   maintainer: self-maintained
 args:
