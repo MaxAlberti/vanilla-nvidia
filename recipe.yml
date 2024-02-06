@@ -59,9 +59,9 @@ modules:
   - echo "Cleaning..."
   - apt-get autoremove -y
   - apt-get clean
-  - echo "--- du ---"
-  - du -h --max-depth=1 /
-  - echo "--- du ---"
+#  - echo "--- du ---"
+#  - du -h --max-depth=1 /
+#  - echo "--- du ---"
 - name: install-cuda
   type: apt
   source:
