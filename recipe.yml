@@ -57,16 +57,42 @@ modules:
   - echo "Updating repositories"
   - apt-get update
   - echo "Cleaning..."
-  - apt-get autoremove -y
   - apt-get clean
-#  - echo "--- du ---"
-#  - du -h --max-depth=1 /
-#  - echo "--- du ---"
+
+- name: install-cuda-deps-1
+  type: shell
+  commands:
+  - apt install -y ca-certificates-java cuda cuda-11-8 cuda-cccl-11-8 cuda-command-line-tools-11-8 cuda-compiler-11-8 cuda-cudart-11-8 cuda-cudart-dev-11-8 cuda-cuobjdump-11-8 cuda-cupti-11-8 cuda-cupti-dev-11-8 cuda-cuxxfilt-11-8 cuda-demo-suite-11-8 cuda-documentation-11-8 cuda-driver-dev-11-8 cuda-drivers cuda-drivers-520 cuda-gdb-11-8
+  - apt clean
+
+- name: install-cuda-deps-2
+  type: shell
+  commands:
+  - apt install -y cuda-libraries-11-8 cuda-libraries-dev-11-8 cuda-memcheck-11-8 cuda-nsight-11-8 cuda-nsight-compute-11-8 cuda-nsight-systems-11-8 cuda-nvcc-11-8 cuda-nvdisasm-11-8 cuda-nvml-dev-11-8 cuda-nvprof-11-8 cuda-nvprune-11-8 cuda-nvrtc-11-8 cuda-nvrtc-dev-11-8 cuda-nvtx-11-8 cuda-nvvp-11-8 cuda-profiler-api-11-8 cuda-runtime-11-8 cuda-sanitizer-11-8
+  - apt clean
+
+- name: install-cuda-deps-3
+  type: shell
+  commands:
+  - apt install -y cuda-toolkit-11-8 cuda-toolkit-11-8-config-common cuda-toolkit-11-config-common cuda-toolkit-config-common cuda-tools-11-8 cuda-visual-tools-11-8 default-jre default-jre-headless gds-tools-11-8 java-common libatk-wrapper-java libatk-wrapper-java-jni libcublas-11-8 libcublas-dev-11-8 libcufft-11-8 libcufft-dev-11-8 libcufile-11-8
+  - apt clean
+
+- name: install-cuda-deps-4
+  type: shell
+  commands:
+  - apt install -y libcufile-dev-11-8 libcurand-11-8 libcurand-dev-11-8 libcusolver-11-8 libcusolver-dev-11-8 libcusparse-11-8 libcusparse-dev-11-8 libnpp-11-8 libnpp-dev-11-8 libnvidia-compiler libnvidia-fbc1 libnvidia-nvvm4 libnvidia-opticalflow1 libnvjpeg-11-8 libnvjpeg-dev-11-8 libnvoptix1
+  - apt clean
+
+- name: install-cuda-deps-5
+  type: shell
+  commands:
+  - apt install -y libtinfo5 libxcb-xinerama0 libxcb-xinput0 libxnvctrl-dev libxnvctrl0 nsight-compute-2022.3.0 nsight-systems-2022.4.2 nvidia-cuda-mps nvidia-detect nvidia-libopencl1 nvidia-opencl-common nvidia-opencl-icd nvidia-xconfig openjdk-17-jre openjdk-17-jre-headless
+  - apt clean
+
 - name: install-cuda
   type: apt
   source:
     packages:
-    - gcc
     - cuda
 
 # - Set Image Name
