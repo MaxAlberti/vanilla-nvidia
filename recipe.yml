@@ -95,7 +95,7 @@ modules:
   - apt install -y libcublas-11-8 libcublas-dev-11-8 libcufft-11-8 
   - apt clean
 
-- name: install-cuda-libcu-1
+- name: install-cuda-libcu-2
   type: shell
   commands:
   - apt install -y libcufft-dev-11-8 libcufile-11-8
@@ -136,7 +136,6 @@ modules:
   commands:
   - apt install -y libtinfo5 libxcb-xinerama0 libxcb-xinput0 libxnvctrl-dev libxnvctrl0 nvidia-cuda-mps nvidia-detect nvidia-libopencl1 nvidia-opencl-common nvidia-opencl-icd nvidia-xconfig openjdk-17-jre openjdk-17-jre-headless
   - apt clean
-
 
 - name: install-cuda
   type: apt
