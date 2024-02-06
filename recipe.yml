@@ -113,6 +113,12 @@ modules:
   - apt install -y java-common libatk-wrapper-java libatk-wrapper-java-jni ca-certificates-java
   - apt clean
 
+- name: install-otix
+  type: shell
+  commands:
+  - apt install -y libnvoptix1
+  - apt clean
+
 - name: install-cuda
   type: apt
   source:
