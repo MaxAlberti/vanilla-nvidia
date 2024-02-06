@@ -59,6 +59,36 @@ modules:
   - echo "Cleaning..."
   - apt-get clean
 
+- name: install-cuda-nsight-1
+  type: shell
+  commands:
+  - apt install -y cuda-nsight-11-8
+  - apt clean
+
+- name: install-cuda-nsight-2
+  type: shell
+  commands:
+  - apt install -y cuda-nsight-compute-11-8
+  - apt clean
+
+- name: install-cuda-nsight-3
+  type: shell
+  commands:
+  - apt install -y cuda-nsight-systems-11-8
+  - apt clean
+
+- name: install-cuda-nsight-4
+  type: shell
+  commands:
+  - apt install -y nsight-compute-2022.3.0
+  - apt clean
+
+- name: install-cuda-nsight-5
+  type: shell
+  commands:
+  - apt install -y nsight-systems-2022.4.2
+  - apt clean
+
 - name: install-cuda-deps-1
   type: shell
   commands:
@@ -68,7 +98,7 @@ modules:
 - name: install-cuda-deps-2
   type: shell
   commands:
-  - apt install -y cuda-libraries-11-8 cuda-libraries-dev-11-8 cuda-memcheck-11-8 cuda-nsight-11-8 cuda-nsight-compute-11-8 cuda-nsight-systems-11-8 cuda-nvcc-11-8 cuda-nvdisasm-11-8 cuda-nvml-dev-11-8 cuda-nvprof-11-8 cuda-nvprune-11-8 cuda-nvrtc-11-8 cuda-nvrtc-dev-11-8 cuda-nvtx-11-8 cuda-nvvp-11-8 cuda-profiler-api-11-8 cuda-runtime-11-8 cuda-sanitizer-11-8
+  - apt install -y cuda-libraries-11-8 cuda-libraries-dev-11-8 cuda-memcheck-11-8 cuda-nvcc-11-8 cuda-nvdisasm-11-8 cuda-nvml-dev-11-8 cuda-nvprof-11-8 cuda-nvprune-11-8 cuda-nvrtc-11-8 cuda-nvrtc-dev-11-8 cuda-nvtx-11-8 cuda-nvvp-11-8 cuda-profiler-api-11-8 cuda-runtime-11-8 cuda-sanitizer-11-8
   - apt clean
 
 - name: install-cuda-deps-3
@@ -86,7 +116,7 @@ modules:
 - name: install-cuda-deps-5
   type: shell
   commands:
-  - apt install -y libtinfo5 libxcb-xinerama0 libxcb-xinput0 libxnvctrl-dev libxnvctrl0 nsight-compute-2022.3.0 nsight-systems-2022.4.2 nvidia-cuda-mps nvidia-detect nvidia-libopencl1 nvidia-opencl-common nvidia-opencl-icd nvidia-xconfig openjdk-17-jre openjdk-17-jre-headless
+  - apt install -y libtinfo5 libxcb-xinerama0 libxcb-xinput0 libxnvctrl-dev libxnvctrl0 nvidia-cuda-mps nvidia-detect nvidia-libopencl1 nvidia-opencl-common nvidia-opencl-icd nvidia-xconfig openjdk-17-jre openjdk-17-jre-headless
   - apt clean
 
 - name: install-cuda
