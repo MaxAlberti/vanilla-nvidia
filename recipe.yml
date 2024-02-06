@@ -89,6 +89,24 @@ modules:
   - apt install -y nsight-systems-2022.4.2
   - apt clean
 
+- name: install-cuda-libcu-1
+  type: shell
+  commands:
+  - apt install -y libcublas-11-8 libcublas-dev-11-8 libcufft-11-8 
+  - apt clean
+
+- name: install-cuda-libcu-1
+  type: shell
+  commands:
+  - apt install -y libcufft-dev-11-8 libcufile-11-8
+  - apt clean
+
+- name: install-cuda-deps-0
+  type: shell
+  commands:
+  - apt install -y cuda-tools-11-8 cuda-visual-tools-11-8 default-jre default-jre-headless gds-tools-11-8 java-common libatk-wrapper-java libatk-wrapper-java-jni
+  - apt clean
+
 - name: install-cuda-deps-1
   type: shell
   commands:
@@ -119,11 +137,6 @@ modules:
   - apt install -y libtinfo5 libxcb-xinerama0 libxcb-xinput0 libxnvctrl-dev libxnvctrl0 nvidia-cuda-mps nvidia-detect nvidia-libopencl1 nvidia-opencl-common nvidia-opencl-icd nvidia-xconfig openjdk-17-jre openjdk-17-jre-headless
   - apt clean
 
-- name: install-cuda-deps-6
-  type: shell
-  commands:
-  - apt install -y cuda-tools-11-8 cuda-visual-tools-11-8 default-jre default-jre-headless gds-tools-11-8 java-common libatk-wrapper-java libatk-wrapper-java-jni libcublas-11-8 libcublas-dev-11-8 libcufft-11-8 libcufft-dev-11-8 libcufile-11-8
-  - apt clean
 
 - name: install-cuda
   type: apt
