@@ -56,8 +56,6 @@ modules:
   - echo "deb http://deb.debian.org/debian/ bookworm main contrib non-free-firmware" > /etc/apt/sources.list.d/debian.list
   - echo "Updating repositories"
   - apt-get update
-  - echo "Cleaning..."
-  - apt-get clean
 
 #- name: install-cuda
 #  type: apt
@@ -70,6 +68,7 @@ modules:
 - name: install-cuda-repo
   type: shell
   commands:
+  - apt-get install -y sed tee
   - curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
   - curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
     sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
