@@ -56,6 +56,12 @@ modules:
   - echo "deb http://deb.debian.org/debian/ bookworm main contrib non-free-firmware" > /etc/apt/sources.list.d/debian.list
   - echo "Updating repositories"
   - apt-get update
+  - echo "Cleaning..."
+  - apt-get autoremove -y
+  - apt-get clean
+  - echo "--- du ---"
+  - du -h --max-depth=1 /
+  - echo "--- du ---"
 - name: install-cuda
   type: apt
   source:
